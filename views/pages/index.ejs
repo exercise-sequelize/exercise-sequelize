@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Title</title>
+    <title>Indo XX1 EJS-Sequelize</title>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta
@@ -24,40 +24,38 @@
     />
   </head>
   <body>
-    <%- include('../partials/header.ejs') %> 
-    
-    <div class="container-card">
-    <% result.map(movie => { %>
-    <div class="card-view">
-      <img
-        class="card-header"
-        src="<%= movie.image_url %>"
-        alt="<%= movie.title %>"
-      />
+    <%- include('../partials/header.ejs') %>
 
-      <div class="card-movie-content">
-        <div class="card-movie-content-head">
-          <h5 class="card-movie-title"><%= movie.title %></h5>
-          <div class="ratings"><span style="color: blue;"><%= movie.rating %></span>/10</div>
-        </div>
-        <div class="card-movie-info">
-          <div class="movie-detail">
-            <label>Release Date</label>
-            <span><%= movie.release_date %></span>
+    <div class="container-card">
+      <% result.map(movie => { %>
+      <div class="card-view">
+        <img
+          class="card-header"
+          src="<%= movie.image_url %>"
+          alt="<%= movie.title %>"
+        />
+
+        <div class="card-movie-content">
+          <div class="card-movie-content-head">
+            <h5 class="card-movie-title"><%= movie.title %></h5>
+            <div class="ratings">
+              <span style="color: blue;"><%= movie.rating %></span>/10
+            </div>
           </div>
-          <div class="movie-detail">
-            <label>Genre</label>
-            <span><%= movie.genre %></span>
+          <div class="card-movie-info">
+            <div class="movie-detail">
+              <label>Release Date</label>
+              <span><%= movie.release_date %></span>
+            </div>
+            <div class="movie-detail">
+              <label>Genre</label>
+              <span><%= movie.genre %></span>
+            </div>
           </div>
         </div>
       </div>
+      <% }) %>
     </div>
-    <% }) %></div>
-
-
-
-
-
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
