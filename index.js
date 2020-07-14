@@ -1,17 +1,19 @@
-const express = require('express')
-const app = express('')
-const ejs = require("ejs");
+const express = require('express');
+const app = express();
 
-const PORT = process.env.PORT || 4000;
+const {PORT} = require('./config')
+const localPort = PORT || 5000
+const db = require('./config')
 
-app.set("view engine", "ejs");
+app.use(express.json());
+app.use(express.urlencoded({extended:false}))
+
+
 app.use(express.static("views"));
+app.use('/', require('./routes/movies'));
 
-app.get("/", (req, res) => {
-    res.render("pages/index.ejs");
-});
-
-
-app.listen(PORT, () => {
-    console.log(`Servers runs on port ${PORT}`);
-});
+if(db){
+    app.listen(localPort, (req,res)=>{
+        console.log(`server running on PORT ${localPort}`)
+    })
+}
