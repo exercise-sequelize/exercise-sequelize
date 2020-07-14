@@ -1,7 +1,7 @@
 const {DataTypes} = require('sequelize');
 const {db} =  require('../config')
 
-const Movie = db.define('users',{
+const Movie = db.define('movie',{
     user_id:{
         type:DataTypes.INTEGER,
         allowNull:false,
@@ -12,7 +12,7 @@ const Movie = db.define('users',{
     title:{
         type:DataTypes.STRING
     },
-    release_data:{
+    release_date:{
         type:DataTypes.DATE
     },
     genre:{
@@ -23,7 +23,13 @@ const Movie = db.define('users',{
     },
     rating:{
         type:DataTypes.STRING
+    },
+    createdAt:{
+        type:DataTypes.DATE
+    },
+    updatedAt:{
+        type:DataTypes.DATE
     }
-})
+},{tableName:'movie'})
 
 module.exports = Movie;

@@ -12,7 +12,7 @@ app.get('/', (req,res) =>{
     res.send('asd')
 })
 
-app.use('/api/movies', require('./routes/movies'));
+app.use('/', require('./routes/movies'));
 
 if(db){
     app.listen(localPort, (req,res)=>{

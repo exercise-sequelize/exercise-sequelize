@@ -1,9 +1,9 @@
-const {Movies} = require('../../models');
+const {Movie} = require('../../models');
 
 module.exports = {
     getAllMovies: async (req,res) => {
         try{
-            const result = await Movies.findAll();
+            const result = await Movie.findAll();
 
             res.send(result)
         }
@@ -15,17 +15,33 @@ module.exports = {
         const {title,release_data,rating,image_url,genre} = req.body;
 
         try{
-        const result = await Movies.create({
+        const result = await Movie.create({
             title,release_data,rating,image_url,genre
         });
         res.send({
-            message:'registration success',
+            message:'upload success',
             result:result
         })
         }
         catch(error){
+            console.log(error)
+            res.send(error);
 
         }
 
+    },
+    deleteMovies: async (req,res) =>{
+        const user_id = req.params
+        try{
+            const result = await Movie.destroy(user_id)
+            res.send({
+                message:'movie berhasil di hapus',
+                result:result
+            })
+        }
+        catch(error){
+            console.log(error)
+            res.send(error)
+        }
     }
 }
